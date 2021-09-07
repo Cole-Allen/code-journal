@@ -1,0 +1,59 @@
+body {
+  font-family: sans-serif;
+  background: #f0f0f0;
+}
+
+header {
+  background: #562b81;
+}
+
+input {
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 1.2rem;
+}
+
+input:focus {
+  border: 2px solid #562b81;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.top {
+  color: white;
+  background: #562b81;
+}
+
+.top h3 {
+  padding: 20px 0;
+  margin: 0;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.title-photo-input {
+  align-content: flex-start;
+}
+
+.save {
+  justify-content: end;
+}
+
+.save-button {
+  border: none;
+  background: #562b81;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+}

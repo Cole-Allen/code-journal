@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="icon" href="images/favicon.ico">
   <link
     rel="stylesheet"
@@ -16,8 +20,45 @@
 </head>
 <body>
   <header>
+    <div class="top container">
+      <h2 class="column-full">Code Journal</h2>
+    </div>
   </header>
   <main>
+    <div data-view="entry-form" class="container row" >
+      <form id="entry-form" method="POST" class="form row column-full">
+        <h1 class="column-full">New Entry</h1>
+        <div class="column-half">
+          <img id="img" src="images/placeholder-image-square.jpg" alt="Empty Image">
+        </div>
+        <div class="title-photo-input column-half row">
+          <label for="title" class="column-full label">
+            Title
+          </label>
+          <input type="text" id="title" name="title" class="column-full title" required>
+
+
+          <label for="photoURL" class="column-full label">
+            Photo URL
+          </label>
+          <input type="url" id="photoURL" name="photoURL" class="column-full photoURL" required>
+
+        </div>
+
+        <div class="row column-full">
+          <label for="notes" class="column-full label">
+            Notes
+          </label>
+          <textarea type="text" size="text" id="notes" name="notes" class="column-full notes" rows="7" required></textarea>
+
+        </div>
+
+        <div class="save column-full row">
+          <input class="save-button" id="save-button" type="submit" value="SAVE">
+        </div>
+
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

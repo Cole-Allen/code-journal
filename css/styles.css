@@ -1,0 +1,90 @@
+body {
+  font-family: 'open sans', sans-serif;
+  background: #f0f0f0;
+}
+
+header {
+  background: #562b81;
+}
+
+h1,
+h2,
+label {
+  font-family: 'proza libre', sans-serif;
+}
+
+input {
+  height: 40px;
+}
+
+input,
+textarea {
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+input:focus,
+textarea:focus {
+  border: 2px solid #562b81;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.top {
+  color: white;
+}
+
+.top h2 {
+  padding: 20px 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.title-photo-input {
+  align-content: flex-start;
+}
+
+.title,
+.photoURL {
+  padding: 3px 0.75rem;
+}
+
+.notes {
+  padding: 10px 0.75rem;
+}
+
+.save {
+  justify-content: end;
+}
+
+.save-button {
+  border: none;
+  background: #562b81;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin: 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .top h2 {
+    padding: 20px 1.5rem;
+  }
+
+  .label {
+    margin: 10px 0;
+  }
+}

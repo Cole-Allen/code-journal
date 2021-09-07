@@ -17,15 +17,15 @@
 <body>
   <header>
     <div class="top container">
-      <h3>Code Journal</h3>
+      <h3 class="column-full">Code Journal</h3>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container row">
-      <form method="POST" class="form row column-full">
+    <div data-view="entry-form" class="container row" >
+      <form id="entry-form" method="POST" class="form row column-full">
         <h1 class="column-full">New Entry</h1>
         <div class="column-half">
-          <img src="images/placeholder-image-square.jpg" alt="Empty Image">
+          <img id="img" src="images/placeholder-image-square.jpg" alt="Empty Image">
         </div>
         <div class="title-photo-input column-half row">
           <label for="title" class="column-full label">
@@ -45,12 +45,12 @@
           <label for="notes" class="column-full label">
             Notes
           </label>
-          <input type="text" id="notes" name="notes" class="column-full" required>
+          <input type="text" id="notes" name="notes" class="column-full notes" required>
 
         </div>
 
         <div class="save column-full row">
-          <input class="save-button" type="submit" value="SAVE">
+          <input class="save-button" id="save-button" type="submit" value="SAVE">
         </div>
 
       </form>

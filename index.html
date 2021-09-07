@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="icon" href="images/favicon.ico">
   <link
     rel="stylesheet"
@@ -17,7 +21,7 @@
 <body>
   <header>
     <div class="top container">
-      <h3 class="column-full">Code Journal</h3>
+      <h2 class="column-full">Code Journal</h2>
     </div>
   </header>
   <main>
@@ -31,13 +35,13 @@
           <label for="title" class="column-full label">
             Title
           </label>
-          <input type="text" id="title" name="title" class="column-full" required>
+          <input type="text" id="title" name="title" class="column-full title" required>
 
 
           <label for="photoURL" class="column-full label">
             Photo URL
           </label>
-          <input type="url" id="photoURL" name="photoURL" class="column-full" required>
+          <input type="url" id="photoURL" name="photoURL" class="column-full photoURL" required>
 
         </div>
 
@@ -45,7 +49,7 @@
           <label for="notes" class="column-full label">
             Notes
           </label>
-          <input type="text" id="notes" name="notes" class="column-full notes" required>
+          <textarea type="text" size="text" id="notes" name="notes" class="column-full notes" rows="7" required></textarea>
 
         </div>
 

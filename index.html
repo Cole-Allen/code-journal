@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Proza+Libre:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="icon" href="images/favicon.ico">
   <link
     rel="stylesheet"
@@ -16,8 +20,39 @@
 </head>
 <body>
   <header>
+    <h1 class="container heading">Code Journal</h1>
   </header>
   <main>
+
+    <div data-view="entries" class="container">
+      <div class="column-full title">
+        <h1>Entries</h1>
+      </div>
+      <ul>
+        <li>
+          <div class="entry row column-full">
+            <div class="img-container column-half">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="text-container column-half">
+              <h2>Placeholder</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="entry row column-full">
+            <div class="img-container column-half">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="text-container column-half">
+              <h2>Placeholder</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

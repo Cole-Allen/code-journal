@@ -1,0 +1,46 @@
+body {
+  font-family: 'open sans', sans-serif;
+}
+
+header {
+  color: white;
+  background: #562b81;
+}
+
+h1,
+h2,
+label {
+  font-family: 'proza libre', sans-serif;
+  padding: 20px 0;
+  margin: 0;
+}
+
+img {
+  object-fit: cover;
+  display: block;
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  font-weight: normal;
+}
+
+.entry {
+  margin: 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .heading {
+    padding: 20px 3rem;
+  }
+
+  .title {
+    padding: 0 1.5rem;
+  }
+}

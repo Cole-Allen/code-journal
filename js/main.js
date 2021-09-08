@@ -5,6 +5,12 @@ var $photo = document.querySelector('#img');
 var $form = document.querySelector('#entry-form');
 var $entriesCon = document.querySelector('.entries-container');
 
+var $navAnchor = document.querySelector('.navbar');
+var $dataViewList = document.querySelectorAll('.data-view');
+var $newEntryButton = document.querySelector('.newButton');
+
+console.log($newEntryButton);
+
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
 });
@@ -54,5 +60,27 @@ window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entryLi = createEntry(data.entries[i]);
     $entriesCon.appendChild(entryLi);
+  }
+});
+
+$navAnchor.addEventListener('click', function (event) {
+  if (event.target.matches('.tab')) {
+    for (var i = 0; i < $dataViewList.length; i++) {
+      $dataViewList[i].classList.add('hidden');
+      if (event.target.getAttribute('data-view') === $dataViewList[i].getAttribute('data-view')) {
+        $dataViewList[i].classList.remove('hidden');
+      }
+    }
+  }
+});
+
+$newEntryButton.addEventListener('click', function (event) {
+  if (event.target.matches('.tab')) {
+    for (var i = 0; i < $dataViewList.length; i++) {
+      $dataViewList[i].classList.add('hidden');
+      if (event.target.getAttribute('data-view') === $dataViewList[i].getAttribute('data-view')) {
+        $dataViewList[i].classList.remove('hidden');
+      }
+    }
   }
 });

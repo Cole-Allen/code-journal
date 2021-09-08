@@ -8,10 +8,10 @@ header {
 
 h1,
 h2,
-label {
+label,
+a {
   font-family: 'proza libre', sans-serif;
-  padding: 20px 0;
-  margin: 0;
+  margin: 20px 0;
 }
 
 img {
@@ -53,6 +53,8 @@ ul {
 
 .top {
   color: white;
+  align-items: center;
+  gap: 20px;
 }
 
 .top h2 {
@@ -74,7 +76,19 @@ ul {
 
 .title,
 .photoURL {
-  padding: 3px 0.75rem;
+  padding: 3px 0;
+}
+
+.title {
+  justify-content: space-between;
+}
+
+.title h1 {
+  display: inline-block;
+}
+
+.newButton {
+  appearance: button;
 }
 
 .notes {

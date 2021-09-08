@@ -17,15 +17,32 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/newEntry.css">
+  <link rel="stylesheet" href="css/entries.css">
+  <link rel="stylesheet" href="css/mediaQ.css">
 </head>
 <body>
   <header>
-    <div class="top container">
-      <h2 class="column-full">Code Journal</h2>
+    <div class="top container row">
+      <h2 class="head-title">Code Journal</h2>
+      <div class="navbar">
+        <a data-view="entries" class="tab entries-button">Entries</a>
+      </div>
     </div>
+
+
   </header>
   <main>
-    <div data-view="entry-form" class="container row" >
+    <div data-view="entries" class="data-view container">
+      <div class="column-full title row">
+        <h1>Entries</h1>
+        <a data-view="entry-form" class="newButton tab">NEW</a>
+      </div>
+      <ul class="entries-container">
+      </ul>
+    </div>
+
+    <div data-view="entry-form" class="data-view container row hidden" >
       <form id="entry-form" method="POST" class="form row column-full">
         <h1 class="column-full">New Entry</h1>
         <div class="column-half">
@@ -35,7 +52,7 @@
           <label for="title" class="column-full label">
             Title
           </label>
-          <input type="text" id="title" name="title" class="column-full title" required>
+          <input type="text" id="title" name="title" class="column-full entry-title" required>
 
 
           <label for="photoURL" class="column-full label">

@@ -1,0 +1,40 @@
+.heading {
+  font-weight: normal;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.title-photo-input {
+  align-content: flex-start;
+}
+
+.entry-title,
+.photoURL {
+  padding: 3px 0.75rem;
+}
+
+.title-photo-input input {
+  height: 50px;
+}
+
+.notes {
+  padding: 10px 0.75rem;
+}
+
+.save {
+  justify-content: end;
+}
+
+.save-button {
+  border: none;
+  background: #562b81;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin: 30px 0;
+}

@@ -9,8 +9,6 @@ var $navAnchor = document.querySelector('.navbar');
 var $dataViewList = document.querySelectorAll('.data-view');
 var $newEntryButton = document.querySelector('.newButton');
 
-console.log($newEntryButton);
-
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
 });
@@ -28,6 +26,13 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
   $form.reset();
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+  for (var i = 0; i < $dataViewList.length; i++) {
+    $dataViewList[i].classList.add('hidden');
+    if ($dataViewList[i].getAttribute('data-view') === 'entries') {
+      $dataViewList[i].classList.remove('hidden');
+    }
+  }
+  refreshEntries(event);
 });
 
 function createEntry(entry) {
@@ -56,12 +61,21 @@ function createEntry(entry) {
   return $li;
 }
 
-window.addEventListener('DOMContentLoaded', function (event) {
+function createEntries(event) {
   for (var i = 0; i < data.entries.length; i++) {
     var entryLi = createEntry(data.entries[i]);
     $entriesCon.appendChild(entryLi);
   }
-});
+}
+
+function refreshEntries(event) {
+  while ($entriesCon.firstChild) {
+    $entriesCon.removeChild($entriesCon.firstChild);
+  }
+  createEntries(event);
+}
+
+window.addEventListener('DOMContentLoaded', createEntries);
 
 $navAnchor.addEventListener('click', function (event) {
   if (event.target.matches('.tab')) {

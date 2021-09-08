@@ -1,4 +1,4 @@
-body {
+* {
   font-family: 'open sans', sans-serif;
 }
 
@@ -18,10 +18,6 @@ img {
   object-fit: cover;
   display: block;
   width: 100%;
-}
-
-input {
-  height: 40px;
 }
 
 input,
@@ -63,6 +59,10 @@ ul {
   font-weight: normal;
 }
 
+.tab:hover {
+  cursor: pointer;
+}
+
 .label {
   font-size: 1.2rem;
   font-weight: 600;
@@ -74,13 +74,18 @@ ul {
   align-content: flex-start;
 }
 
-.title,
+.entry-title,
 .photoURL {
-  padding: 3px 0;
+  padding: 3px 0.75rem;
+}
+
+.title-photo-input input {
+  height: 50px;
 }
 
 .title {
   justify-content: space-between;
+  align-items: center;
 }
 
 .title h1 {
@@ -88,7 +93,11 @@ ul {
 }
 
 .newButton {
+  color: white;
   appearance: button;
+  background: #562b81;
+  padding: 8px 15px;
+  border-radius: 3px;
 }
 
 .notes {

@@ -3,6 +3,7 @@
 var $photoUrl = document.querySelector('#photoURL');
 var $photo = document.querySelector('#img');
 var $form = document.querySelector('#entry-form');
+var $entriesCon = document.querySelector('.entries-container');
 
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
@@ -35,10 +36,10 @@ function createEntry(entry) {
   $imgCon.setAttribute('class', 'img-container column-half');
   $textCon.setAttribute('class', 'img-container column-half');
 
-  $img.setAttribute('src', entry.imageURL);
+  $img.setAttribute('src', entry.photoURL);
 
   $textH.textContent = entry.title;
-  $textP.textContent = entry.text;
+  $textP.textContent = entry.notes;
 
   $li.appendChild($imgCon);
   $li.appendChild($textCon);
@@ -50,4 +51,8 @@ function createEntry(entry) {
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var entryLi = createEntry(data.entries[i]);
+    $entriesCon.appendChild(entryLi);
+  }
 });

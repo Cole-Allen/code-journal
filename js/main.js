@@ -9,12 +9,7 @@ var $navAnchor = document.querySelector('.navbar');
 var $dataViewList = document.querySelectorAll('.data-view');
 var $newEntryButton = document.querySelector('.newButton');
 
-for (var i = 0; i < $dataViewList.length; i++) {
-  $dataViewList[i].classList.add('hidden');
-  if ($dataViewList[i].getAttribute('data-view') === data.view) {
-    $dataViewList[i].classList.remove('hidden');
-  }
-}
+switchViews(data.view);
 
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
@@ -33,20 +28,19 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
   $form.reset();
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
-  for (var i = 0; i < $dataViewList.length; i++) {
-    $dataViewList[i].classList.add('hidden');
-    if ($dataViewList[i].getAttribute('data-view') === 'entries') {
-      $dataViewList[i].classList.remove('hidden');
-      data.view = 'entries';
-    }
-  }
+  switchViews('entries');
   refreshEntries(event);
 });
 
 window.addEventListener('DOMContentLoaded', createEntries);
 
-$navAnchor.addEventListener('click', switchViews);
-$newEntryButton.addEventListener('click', switchViews);
+$navAnchor.addEventListener('click', function (event) {
+  switchViews(event.target.getAttribute('data-view'));
+});
+
+$newEntryButton.addEventListener('click', function (event) {
+  switchViews(event.target.getAttribute('data-view'));
+});
 
 function createEntry(entry) {
   var $li = document.createElement('li');
@@ -88,10 +82,12 @@ function refreshEntries(event) {
   createEntries(event);
 }
 
-function switchViews(event) {
+function switchViews(target) {
+  window.scrollTo(0, 0);
   for (var i = 0; i < $dataViewList.length; i++) {
     $dataViewList[i].classList.add('hidden');
-    if (event.target.getAttribute('data-view') === $dataViewList[i].getAttribute('data-view')) {
+    var viewListAtt = $dataViewList[i].getAttribute('data-view');
+    if (target === viewListAtt) {
       $dataViewList[i].classList.remove('hidden');
       data.view = $dataViewList[i].getAttribute('data-view');
     }

@@ -35,6 +35,11 @@ $form.addEventListener('submit', function (event) {
   refreshEntries(event);
 });
 
+window.addEventListener('DOMContentLoaded', createEntries);
+
+$navAnchor.addEventListener('click', switchViews);
+$newEntryButton.addEventListener('click', switchViews);
+
 function createEntry(entry) {
   var $li = document.createElement('li');
   var $imgCon = document.createElement('div');
@@ -45,7 +50,7 @@ function createEntry(entry) {
 
   $li.setAttribute('class', 'entry row column-full');
   $imgCon.setAttribute('class', 'img-container column-half');
-  $textCon.setAttribute('class', 'img-container column-half');
+  $textCon.setAttribute('class', 'text-container column-half');
 
   $img.setAttribute('src', entry.photoURL);
 
@@ -75,9 +80,7 @@ function refreshEntries(event) {
   createEntries(event);
 }
 
-window.addEventListener('DOMContentLoaded', createEntries);
-
-$navAnchor.addEventListener('click', function (event) {
+function switchViews(event) {
   if (event.target.matches('.tab')) {
     for (var i = 0; i < $dataViewList.length; i++) {
       $dataViewList[i].classList.add('hidden');
@@ -86,15 +89,4 @@ $navAnchor.addEventListener('click', function (event) {
       }
     }
   }
-});
-
-$newEntryButton.addEventListener('click', function (event) {
-  if (event.target.matches('.tab')) {
-    for (var i = 0; i < $dataViewList.length; i++) {
-      $dataViewList[i].classList.add('hidden');
-      if (event.target.getAttribute('data-view') === $dataViewList[i].getAttribute('data-view')) {
-        $dataViewList[i].classList.remove('hidden');
-      }
-    }
-  }
-});
+}

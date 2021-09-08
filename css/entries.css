@@ -1,0 +1,20 @@
+.entry {
+  margin: 30px 0;
+}
+
+.title {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title h1 {
+  display: inline-block;
+}
+
+.newButton {
+  color: white;
+  appearance: button;
+  background: #562b81;
+  padding: 8px 15px;
+  border-radius: 3px;
+}

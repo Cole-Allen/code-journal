@@ -10,6 +10,7 @@ h1,
 h2,
 label,
 a {
+  display: inline-block;
   font-family: 'proza libre', sans-serif;
   margin: 20px 0;
 }

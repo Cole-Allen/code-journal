@@ -47,11 +47,15 @@ function createEntry(entry) {
   var $imgCon = document.createElement('div');
   var $textCon = document.createElement('div');
   var $img = document.createElement('img');
+  var $titleCon = document.createElement('div');
   var $textH = document.createElement('h2');
+  var $editIcon = document.createElement('i');
   var $textP = document.createElement('p');
 
   $li.setAttribute('class', 'entry row column-full');
   $imgCon.setAttribute('class', 'img-container column-half');
+  $titleCon.setAttribute('class', 'entry-title-container row');
+  $editIcon.setAttribute('class', 'fas fa-pen icon');
   $textCon.setAttribute('class', 'text-container column-half');
 
   $img.setAttribute('src', entry.photoURL);
@@ -62,7 +66,9 @@ function createEntry(entry) {
   $li.appendChild($imgCon);
   $li.appendChild($textCon);
   $imgCon.appendChild($img);
-  $textCon.appendChild($textH);
+  $titleCon.appendChild($textH);
+  $titleCon.appendChild($editIcon);
+  $textCon.appendChild($titleCon);
   $textCon.appendChild($textP);
 
   return $li;

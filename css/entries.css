@@ -18,3 +18,13 @@
   padding: 8px 15px;
   border-radius: 3px;
 }
+
+.entry-title-container {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5em;
+  color: #562b81;
+}

@@ -27,6 +27,7 @@ $form.addEventListener('submit', function (event) {
     refreshEntries(event);
     data.editing = null;
     refreshEditForm(event);
+    $form.reset();
   } else {
     var entry = createEntryData(event);
     data.entries.unshift(entry);
@@ -34,6 +35,7 @@ $form.addEventListener('submit', function (event) {
     $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
     switchViews('entries');
     refreshEntries(event);
+    refreshEditForm(event);
   }
 });
 
@@ -57,7 +59,6 @@ $newEntryButton.addEventListener('click', function (event) {
 $entriesCon.addEventListener('click', function (event) {
   if (event.target.getAttribute('class') === 'fas fa-pen icon') {
     switchViews('entry-form');
-    console.log(data.entries[data.entries.length - event.target.parentNode.parentNode.parentNode.getAttribute('data-entry-id')]);
     data.editing = data.entries[data.entries.length - event.target.parentNode.parentNode.parentNode.getAttribute('data-entry-id')];
     editEntriesPage(data.editing);
   }
@@ -137,6 +138,7 @@ function editEntriesPage(entry) {
 }
 
 function refreshEditForm(event) {
+
   $form.childNodes[1].textContent = 'New Entry';
   $form.childNodes[3].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.childNodes[5].childNodes[3].removeAttribute('value');

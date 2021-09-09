@@ -1,0 +1,42 @@
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.637);
+}
+
+.modal-box {
+  padding: 30px;
+  background: white;
+  border-radius: 5px;
+}
+
+.modal-box h3 {
+  margin-bottom: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-cancel {
+  background: rgb(194, 194, 194);
+}
+
+.modal-confirm {
+  background: rgb(255, 63, 29);
+  color: white;
+}

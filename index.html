@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/newEntry.css">
   <link rel="stylesheet" href="css/entries.css">
+  <link rel="stylesheet" href="css/modal.css">
   <link rel="stylesheet" href="css/mediaQ.css">
 </head>
 <body>
@@ -71,10 +72,22 @@
         </div>
 
         <div class="save column-full row">
+          <button class="delete-button hidden" id="delete-button">Delete Entry</button>
           <button class="save-button" id="save-button" type="submit" value="SAVE">SAVE</button>
+
         </div>
 
       </form>
+      <div class="modal hidden">
+        <div class="modal-box">
+          <h3>Are you sure you want to delete this entry?</h3>
+          <div class="modal-buttons">
+            <button class="modal-cancel">CANCEL</button>
+            <button class="modal-confirm">CONFIRM</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

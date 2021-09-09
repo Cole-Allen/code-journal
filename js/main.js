@@ -9,6 +9,8 @@ var $navAnchor = document.querySelector('.navbar');
 var $dataViewList = document.querySelectorAll('.data-view');
 var $newEntryButton = document.querySelector('.newButton');
 
+var $deleteButton = document.querySelector('#delete-button');
+
 switchViews(data.view);
 
 if (data.view === 'entry-form' && data.editing) {

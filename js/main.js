@@ -42,6 +42,12 @@ $newEntryButton.addEventListener('click', function (event) {
   switchViews(event.target.getAttribute('data-view'));
 });
 
+$entriesCon.addEventListener('click', function (event) {
+  if (event.target.getAttribute('class') === 'fas fa-pen icon') {
+    switchViews('entry-form');
+  }
+});
+
 function createEntry(entry) {
   var $li = document.createElement('li');
   var $imgCon = document.createElement('div');
@@ -62,6 +68,8 @@ function createEntry(entry) {
 
   $textH.textContent = entry.title;
   $textP.textContent = entry.notes;
+
+  $li.setAttribute('data-entry-id', entry.entryID);
 
   $li.appendChild($imgCon);
   $li.appendChild($textCon);

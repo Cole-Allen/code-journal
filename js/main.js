@@ -11,6 +11,10 @@ var $newEntryButton = document.querySelector('.newButton');
 
 switchViews(data.view);
 
+if (data.view === 'entry-form' && data.editing) {
+  editEntriesPage(data.editing);
+}
+
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
 });
@@ -37,6 +41,7 @@ window.addEventListener('DOMContentLoaded', createEntries);
 
 $navAnchor.addEventListener('click', function (event) {
   if (event.target.getAttribute('class').includes('tab')) {
+    data.editing = null;
     refreshEditForm(event);
     switchViews(event.target.getAttribute('data-view'));
   }
@@ -44,6 +49,7 @@ $navAnchor.addEventListener('click', function (event) {
 });
 
 $newEntryButton.addEventListener('click', function (event) {
+  data.editing = null;
   refreshEditForm(event);
   switchViews(event.target.getAttribute('data-view'));
 });
@@ -131,11 +137,10 @@ function editEntriesPage(entry) {
 }
 
 function refreshEditForm(event) {
-  console.log('another bug another day');
   $form.childNodes[1].textContent = 'New Entry';
   $form.childNodes[3].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.childNodes[5].childNodes[3].setAttribute('value', '');
-  $form.childNodes[5].childNodes[7].setAttribute('value', '');
+  $form.childNodes[5].childNodes[3].removeAttribute('value');
+  $form.childNodes[5].childNodes[7].removeAttribute('value');
   $form.childNodes[7].childNodes[3].textContent = '';
 }
 

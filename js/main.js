@@ -17,14 +17,7 @@ $photoUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
-  var entry = {};
-
-  entry.title = document.forms[0].title.value;
-  entry.photoURL = document.forms[0].photoURL.value;
-  entry.notes = document.forms[0].notes.value;
-  entry.entryID = data.nextEntryId;
-  data.nextEntryId++;
-
+  createEntryData(event);
   data.entries.unshift(entry);
   $form.reset();
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
@@ -44,9 +37,22 @@ $newEntryButton.addEventListener('click', function (event) {
 
 $entriesCon.addEventListener('click', function (event) {
   if (event.target.getAttribute('class') === 'fas fa-pen icon') {
+    console.log(event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id'));
     switchViews('entry-form');
+    data.editing = data.entries[data.entries.length - event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id')];
+    console.log(data.editing);
   }
 });
+
+function createEntryData(event) {
+  var entry = {};
+
+  entry.title = document.forms[0].title.value;
+  entry.photoURL = document.forms[0].photoURL.value;
+  entry.notes = document.forms[0].notes.value;
+  entry.entryID = data.nextEntryId;
+  data.nextEntryId++;
+}
 
 function createEntry(entry) {
   var $li = document.createElement('li');

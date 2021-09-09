@@ -130,20 +130,20 @@ function refreshEntries(event) {
 }
 
 function editEntriesPage(entry) {
-  $form.childNodes[1].textContent = 'Edit Entry';
-  $form.childNodes[3].childNodes[1].setAttribute('src', entry.photoURL);
-  $form.childNodes[5].childNodes[3].setAttribute('value', entry.title);
-  $form.childNodes[5].childNodes[7].setAttribute('value', entry.photoURL);
-  $form.childNodes[7].childNodes[3].textContent = entry.notes;
+  $form.querySelector('h1').textContent = 'Edit Entry';
+  $form.querySelector('#img').setAttribute('src', entry.photoURL);
+  document.forms[0].title.setAttribute('value', entry.title);
+  document.forms[0].photoURL.setAttribute('value', entry.photoURL);
+  document.forms[0].notes.textContent = entry.notes;
 }
 
 function refreshEditForm(event) {
 
-  $form.childNodes[1].textContent = 'New Entry';
-  $form.childNodes[3].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.childNodes[5].childNodes[3].removeAttribute('value');
-  $form.childNodes[5].childNodes[7].removeAttribute('value');
-  $form.childNodes[7].childNodes[3].textContent = '';
+  $form.querySelector('h1').textContent = 'New Entry';
+  $form.querySelector('#img').setAttribute('src', 'images/placeholder-image-square.jpg');
+  document.forms[0].title.removeAttribute('value');
+  document.forms[0].photoURL.removeAttribute('value');
+  document.forms[0].notes.textContent = '';
 }
 
 function switchViews(target) {

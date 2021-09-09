@@ -10,6 +10,7 @@ h1,
 h2,
 label,
 a {
+  display: inline-block;
   font-family: 'proza libre', sans-serif;
   margin: 20px 0;
 }
@@ -31,6 +32,10 @@ input:focus,
 textarea:focus {
   border: 2px solid #562b81;
   outline: none;
+}
+
+button {
+  font-size: 1.2rem;
 }
 
 ul {

@@ -17,21 +17,31 @@ $photoUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
-  var entry = createEntryData(event);
-  data.entries.unshift(entry);
-  $form.reset();
-  $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
-  switchViews('entries');
-  refreshEntries(event);
+  if (data.editing) {
+    console.log(data.editing);
+  } else {
+
+    var entry = createEntryData(event);
+    data.entries.unshift(entry);
+    $form.reset();
+    $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+    switchViews('entries');
+    refreshEntries(event);
+  }
 });
 
 window.addEventListener('DOMContentLoaded', createEntries);
 
 $navAnchor.addEventListener('click', function (event) {
-  switchViews(event.target.getAttribute('data-view'));
+  if (event.target.getAttribute('class').includes('tab')) {
+    refreshEditForm(event);
+    switchViews(event.target.getAttribute('data-view'));
+  }
+
 });
 
 $newEntryButton.addEventListener('click', function (event) {
+  refreshEditForm(event);
   switchViews(event.target.getAttribute('data-view'));
 });
 
@@ -39,18 +49,22 @@ $entriesCon.addEventListener('click', function (event) {
   if (event.target.getAttribute('class') === 'fas fa-pen icon') {
     switchViews('entry-form');
     data.editing = data.entries[data.entries.length - event.target.parentElement.parentElement.parentElement.getAttribute('data-entry-id')];
-    editEntry(event);
+    editEntriesPage(event);
   }
 });
 
 function createEntryData(event) {
   var entry = {};
-
   entry.title = document.forms[0].title.value;
   entry.photoURL = document.forms[0].photoURL.value;
   entry.notes = document.forms[0].notes.value;
   entry.entryID = data.nextEntryId;
   data.nextEntryId++;
+  return entry;
+}
+
+function editEntry(event) {
+  console.log(data.entries[data.editing.entryID]);
 }
 
 function createEntry(entry) {
@@ -101,12 +115,20 @@ function refreshEntries(event) {
   createEntries(event);
 }
 
-function editEntry(event) {
+function editEntriesPage(event) {
   $form.childNodes[1].textContent = 'Edit Entry';
   $form.childNodes[3].childNodes[1].setAttribute('src', data.editing.photoURL);
   $form.childNodes[5].childNodes[3].setAttribute('value', data.editing.title);
   $form.childNodes[5].childNodes[7].setAttribute('value', data.editing.photoURL);
   $form.childNodes[7].childNodes[3].textContent = data.editing.notes;
+}
+
+function refreshEditForm(event) {
+  $form.childNodes[1].textContent = 'New Entry';
+  $form.childNodes[3].childNodes[1].setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.childNodes[5].childNodes[3].setAttribute('value', '');
+  $form.childNodes[5].childNodes[7].setAttribute('value', '');
+  $form.childNodes[7].childNodes[3].textContent = '';
 }
 
 function switchViews(target) {

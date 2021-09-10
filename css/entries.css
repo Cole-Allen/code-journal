@@ -11,6 +11,23 @@
   display: inline-block;
 }
 
+.entries-title {
+  display: flex;
+  align-items: center;
+}
+
+.entries-title label {
+  margin-left: 30px;
+  font-size: 1.5rem;
+}
+
+.entries-title select {
+  font-size: 1.2rem;
+  border: none;
+  padding: 5px 0;
+  text-decoration: underline;
+}
+
 .newButton {
   color: white;
   appearance: button;

@@ -10,6 +10,8 @@ var $dataViewList = document.querySelectorAll('.data-view');
 var $newEntryButton = document.querySelector('.newButton');
 
 var $deleteButton = document.querySelector('#delete-button');
+var $cancelDeleteButton = document.querySelector('.modal-cancel');
+var $confirmDeleteButton = document.querySelector('.modal-confirm');
 
 switchViews(data.view);
 
@@ -61,9 +63,30 @@ $newEntryButton.addEventListener('click', function (event) {
 $entriesCon.addEventListener('click', function (event) {
   if (event.target.getAttribute('class') === 'fas fa-pen icon') {
     switchViews('entry-form');
-    data.editing = data.entries[data.entries.length - event.target.parentNode.parentNode.parentNode.getAttribute('data-entry-id')];
-    editEntriesPage(data.editing);
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryID.toString() === event.target.parentNode.parentNode.parentNode.getAttribute('data-entry-id')) {
+        data.editing = data.entries[i];
+      }
+    }
+    if (data.editing) {
+      editEntriesPage(data.editing);
+    }
+
   }
+});
+
+$deleteButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.querySelector('.modal').classList.remove('hidden');
+});
+
+$cancelDeleteButton.addEventListener('click', function (event) {
+  document.querySelector('.modal').classList.add('hidden');
+});
+
+$confirmDeleteButton.addEventListener('click', function (event) {
+  deleteEntry(data.editing);
+  document.querySelector('.modal').classList.add('hidden');
 });
 
 function createEntryData(event) {
@@ -124,6 +147,15 @@ function createEntries(event) {
   }
 }
 
+function deleteEntry(entry) {
+  data.entries.splice(data.entries.length - entry.entryID, 1);
+  $form.reset();
+  refreshEditForm(event);
+  switchViews('entries');
+
+  refreshEntries(event);
+}
+
 function refreshEntries(event) {
   while ($entriesCon.firstChild) {
     $entriesCon.removeChild($entriesCon.firstChild);
@@ -134,15 +166,22 @@ function refreshEntries(event) {
 function editEntriesPage(entry) {
   $form.querySelector('h1').textContent = 'Edit Entry';
   $form.querySelector('#img').setAttribute('src', entry.photoURL);
+  $form.querySelector('.delete-button').classList.remove('hidden');
+  $form.querySelector('.button-container').classList.remove('save');
+  $form.querySelector('.button-container').classList.add('save-delete');
   document.forms[0].title.setAttribute('value', entry.title);
   document.forms[0].photoURL.setAttribute('value', entry.photoURL);
   document.forms[0].notes.textContent = entry.notes;
+
 }
 
 function refreshEditForm(event) {
 
   $form.querySelector('h1').textContent = 'New Entry';
   $form.querySelector('#img').setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.querySelector('.delete-button').classList.add('hidden');
+  $form.querySelector('.button-container').classList.add('save');
+  $form.querySelector('.button-container').classList.remove('save-delete');
   document.forms[0].title.removeAttribute('value');
   document.forms[0].photoURL.removeAttribute('value');
   document.forms[0].notes.textContent = '';

@@ -66,7 +66,6 @@ $entriesCon.addEventListener('click', function (event) {
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryID.toString() === event.target.parentNode.parentNode.parentNode.getAttribute('data-entry-id')) {
         data.editing = data.entries[i];
-        console.log(data.editing);
       }
     }
     if (data.editing) {
@@ -152,7 +151,6 @@ function deleteEntry(entry) {
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryID === entry.entryID) {
       data.entries.splice(i, 1);
-      console.log(data.editing);
     }
   }
   $form.reset();

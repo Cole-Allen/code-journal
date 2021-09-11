@@ -13,11 +13,22 @@ var $deleteButton = document.querySelector('#delete-button');
 var $cancelDeleteButton = document.querySelector('.modal-cancel');
 var $confirmDeleteButton = document.querySelector('.modal-confirm');
 
+var $sortbySelect = document.querySelector('#sort-by');
+
 switchViews(data.view);
 
 if (data.view === 'entry-form' && data.editing) {
   editEntriesPage(data.editing);
 }
+
+$sortbySelect.addEventListener('change', function (event) {
+  if (event.target.value === 'oldest') {
+    createEntriesOldest(event);
+  } else if (event.target.value === 'newest') {
+    createEntries(event);
+  }
+
+});
 
 $photoUrl.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
@@ -95,6 +106,8 @@ function createEntryData(event) {
   entry.photoURL = document.forms[0].photoURL.value;
   entry.notes = document.forms[0].notes.value;
   entry.entryID = data.nextEntryId;
+  var date = new Date();
+  entry.date = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes()];
   data.nextEntryId++;
   return entry;
 }
@@ -115,12 +128,14 @@ function createEntry(entry) {
   var $textH = document.createElement('h2');
   var $editIcon = document.createElement('i');
   var $textP = document.createElement('p');
+  var $dateT = document.createElement('h6');
 
   $li.setAttribute('class', 'entry row column-full');
   $imgCon.setAttribute('class', 'img-container column-half');
   $titleCon.setAttribute('class', 'entry-title-container row');
   $editIcon.setAttribute('class', 'fas fa-pen icon');
   $textCon.setAttribute('class', 'text-container column-half');
+  $dateT.setAttribute('class', 'date');
 
   $img.setAttribute('src', entry.photoURL);
 
@@ -133,7 +148,13 @@ function createEntry(entry) {
   $li.appendChild($textCon);
   $imgCon.appendChild($img);
   $titleCon.appendChild($textH);
+
   $titleCon.appendChild($editIcon);
+  if (entry.date) {
+    $dateT.textContent = entry.date[3] + ':' + entry.date[4] + '     ' + entry.date[0] + '/' + entry.date[1] + '/' + entry.date[2];
+    $titleCon.appendChild($dateT);
+  }
+
   $textCon.appendChild($titleCon);
   $textCon.appendChild($textP);
 
@@ -141,9 +162,18 @@ function createEntry(entry) {
 }
 
 function createEntries(event) {
+  removeDisplayEntries(event);
   for (var i = 0; i < data.entries.length; i++) {
     var entryLi = createEntry(data.entries[i]);
     $entriesCon.appendChild(entryLi);
+  }
+}
+
+function createEntriesOldest(event) {
+  removeDisplayEntries(event);
+  for (var i = data.entries.length - 1; i > -1; i--) {
+
+    $entriesCon.appendChild(createEntry(data.entries[i]));
   }
 }
 
@@ -161,10 +191,14 @@ function deleteEntry(entry) {
 }
 
 function refreshEntries(event) {
+  removeDisplayEntries(event);
+  createEntries(event);
+}
+
+function removeDisplayEntries(event) {
   while ($entriesCon.firstChild) {
     $entriesCon.removeChild($entriesCon.firstChild);
   }
-  createEntries(event);
 }
 
 function editEntriesPage(entry) {

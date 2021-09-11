@@ -11,6 +11,44 @@
   display: inline-block;
 }
 
+.entries-title {
+  display: flex;
+  align-items: center;
+}
+
+.entries-title label {
+  margin: 0;
+  margin-left: 30px;
+  font-size: 1.5rem;
+}
+
+.entries-title select {
+  font-size: 1.5rem;
+  border: none;
+  height: 100%;
+  margin-left: 10px;
+  padding-bottom: 6px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.entry-title-container h2 {
+  margin-bottom: 0;
+}
+
+.date {
+  font-size: 1.2rem;
+  flex-basis: 100%;
+  margin: 0;
+  margin-bottom: 20px;
+  color: rgb(161, 161, 161);
+  font-weight: normal;
+}
+
+.text-container p {
+  font-size: 1.2rem;
+}
+
 .newButton {
   color: white;
   appearance: button;
@@ -27,4 +65,5 @@
 .icon {
   font-size: 1.5em;
   color: #562b81;
+  margin-top: 20px;
 }
